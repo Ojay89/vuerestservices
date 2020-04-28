@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Olivers Book Store</title>
+  <link rel="stylesheet" type="text/css" href="bundle.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<!-- <style>
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  margin-top: 1em;
+  margin-left: 1em;
+  padding: 5px;
+}
+
+
+thead tr th:first-child,
+tbody tr td:first-child {
+  width: 2em;
+  min-width: 2em;
+  max-width: 2em;
+  word-break: break-all;
+}
+
+  /* tr:nth-of-type(odd) {
+        background-color:lightgray;
+      } */
+
+      tr:nth-child(even) {background-color: lightsteelblue;}
+
+  
+
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background: red;
+}
+
+
+</style> -->
+
+
+<body>
+  <h1 style="margin-left: 5px;">Olivers Book Store</h1>
+  <h2>Get all</h2>
+  <div id="app">
+
+  <button v-on:click="getAllBooks" class="btn btn-info">Get all books</button>
+  
+  <div>{{errorMessage}}</div>
+
+    <ul v-if="books.length">
+      <li v-for="book in books">
+        {{book.id}} {{book.title}} {{book.author}} {{book.publisher}} {{book.price}}
+      </li>
+    </ul>
+
+    <h2>Add book</h2>
+    <input v-model="formData.title" placeholder="title" type="text" />
+    <input v-model="formData.author" placeholder="author" type="text" />
+    <input v-model="formData.publisher" placeholder="publisher" type="text" />
+    <input v-model="formData.price" placeholder="price" type="number" />
+    <button v-on:click="addBook">Add</button>
+    <div>{{addMessage}}</div>
+
+    <h2>Delete book</h2>
+    <input v-model="deleteId" placeholder="book id" type="number">
+    <button v-on:click="deleteBook(deleteId)" >Delete</button>
+    <div>{{deleteMessage}}</div>
+
+
+  <!-- <button class="button" style="margin-left: 1em; border: 2px; border-radius: 20px;" id=getAllButton>Get all books here!</button> -->
+  
+</div>
+  <script src="bundle.js"></script>
+  
+</body>
+</html>
